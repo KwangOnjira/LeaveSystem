@@ -4,7 +4,7 @@ dbSeq.sequelize.sync();
 const fs = require("fs");
 
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const { signature } = require("../Middleware/signsignature");
 const { where } = require("sequelize");

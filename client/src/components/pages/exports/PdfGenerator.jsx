@@ -28,7 +28,7 @@ console.log("leaveData[0].leaveID: ",leaveData[0].leaveID)
         const getDeputySignature = getSignatureDeputy(leaveData[0].leaveID,localStorage.getItem("token"));
         console.log("getDeputySignature: ",getDeputySignature)
         getDeputySignature.then(response => {
-          const deputySignature = `http://localhost:5432/signatures/${response.data}`;
+          const deputySignature = import.meta.env.VITE_APP_API+`/signatures/${response.data}`;
           console.log("Deputy Signature URL:", deputySignature);
           vacationleave({userData, leaveData, userSignature,deputySignature,inspectorSignature,firstSignature,secondSignature, prevStat})
       }).catch(error => {

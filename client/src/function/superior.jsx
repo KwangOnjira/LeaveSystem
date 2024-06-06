@@ -1,83 +1,83 @@
 import axios from "axios";
 
 export const getUserFromPosition = async (position,divisionName, token) =>
-  await axios.get(`http://localhost:5432/getUserFromPosition/${position}/${divisionName}`);
+  await axios.get(import.meta.env.VITE_APP_API+`/getUserFromPosition/${position}/${divisionName}`);
 
   export const getUserFromOnlyPosition = async (position,token) =>
-  await axios.get(`http://localhost:5432/getUserFromOnlyPosition/${position}`);
+  await axios.get(import.meta.env.VITE_APP_API+`/getUserFromOnlyPosition/${position}`);
 
 export const getSuperior = async (token) =>
-  await axios.get("http://localhost:5432/getSuperior", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getSuperior", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getAllFirstSuperior = async (token) =>
-  await axios.get("http://localhost:5432/getAllFirstSuperior", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getAllFirstSuperior", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getAllSecondSuperiorInDivision = async (token) =>
-  await axios.get("http://localhost:5432/getAllSecondSuperiorInDivision", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getAllSecondSuperiorInDivision", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getAllHightSecondSuperior = async (token) =>
-  await axios.get("http://localhost:5432/getAllHightSecondSuperior", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getAllHightSecondSuperior", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getFirstSuperior = async (citizenID, token) =>
-  await axios.get(`http://localhost:5432/getFirstSuperior/${citizenID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getFirstSuperior/${citizenID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getSomeSecondSuperior = async (citizenID, token) =>
-  await axios.get(`http://localhost:5432/getSomeSecondSuperior/${citizenID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getSomeSecondSuperior/${citizenID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const updateFirstSuperior = async (updateData, token) =>
-  await axios.put(`http://localhost:5432/updateFirstSuperior`, updateData, {
+  await axios.put(import.meta.env.VITE_APP_API+`/updateFirstSuperior`, updateData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getUserMatch = async (token) =>
-  await axios.get("http://localhost:5432/getUserMatch", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getUserMatch", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getMatchStatus = async (token) =>
-  await axios.get("http://localhost:5432/getMatchStatus", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getMatchStatus", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const updateComment = async (leaveID,updateData, token) =>
-  await axios.put(`http://localhost:5432/updateComment/${leaveID}`, updateData, {
+  await axios.put(import.meta.env.VITE_APP_API+`/updateComment/${leaveID}`, updateData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const updateCompleteStatus = async (leaveID,updateData, token) =>
-  await axios.put(`http://localhost:5432/updateCompleteStatus/${leaveID}`, updateData, {
+  await axios.put(import.meta.env.VITE_APP_API+`/updateCompleteStatus/${leaveID}`, updateData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

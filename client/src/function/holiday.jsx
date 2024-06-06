@@ -2,35 +2,35 @@ import axios from "axios";
 
 //getHoliday(localStorage.getItem("token"));
 export const getHoliday = async (token) =>
-  await axios.get("http://localhost:5432/getHoliday",{
+  await axios.get(import.meta.env.VITE_APP_API+"/getHoliday",{
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getHolidayById = async (id,token) =>
-  await axios.get(`http://localhost:5432/getHolidayById/${id}`,{
+  await axios.get(import.meta.env.VITE_APP_API+`/getHolidayById/${id}`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const updateHoliday = async (id,updateData, token) =>
-  await axios.put(`http://localhost:5432/updateHoliday/${id}`, updateData, {
+  await axios.put(import.meta.env.VITE_APP_API+`/updateHoliday/${id}`, updateData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const createHoliday = async (data, token) =>
-  await axios.post("http://localhost:5432/createHoliday", data, {
+  await axios.post(import.meta.env.VITE_APP_API+"/createHoliday", data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const deleteHoliday = async (id,token) =>
-  await axios.delete(`http://localhost:5432/deleteHoliday/${id}`,  {
+  await axios.delete(import.meta.env.VITE_APP_API+`/deleteHoliday/${id}`,  {
     headers: {
       Authorization: `Bearer ${token}`,
     },

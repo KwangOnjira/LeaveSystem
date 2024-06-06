@@ -2,7 +2,7 @@ import axios from "axios";
 
 //getStatistic(localStorage.getItem('token'))
 export const getStatistic = async (token) =>
-  await axios.get("http://localhost:5432/statistics", {
+  await axios.get(import.meta.env.VITE_APP_API+"/statistics", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -12,7 +12,7 @@ export const getStatistic = async (token) =>
 export const getLastStatistic = async (token) => {
   try {
     const response = await axios.get(
-      "http://localhost:5432/getDataLastStatistic",
+      import.meta.env.VITE_APP_API+"/getDataLastStatistic",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -41,14 +41,14 @@ export const getLastStatistic = async (token) => {
 
 //createStat({...statData,leave_count: statData.leave_count + 1,ML_DayCount: statData.ML_DayCount + formMaternity.numDay,},localStorage.getItem("token"));
 export const createStat = async (statData, token) =>
-  await axios.post("http://localhost:5432/createStat", statData, {
+  await axios.post(import.meta.env.VITE_APP_API+"/createStat", statData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const createInitStatistic = async (statData, token) =>
-  await axios.post("http://localhost:5432/createInitStatistic", statData, {
+  await axios.post(import.meta.env.VITE_APP_API+"/createInitStatistic", statData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -56,7 +56,7 @@ export const createInitStatistic = async (statData, token) =>
 
 //statById(statisticID,localStorage.getItem("token"))
 export const getStatById = async (statisticID, token) =>
-  await axios.get(`http://localhost:5432/getStatisticById/${statisticID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getStatisticById/${statisticID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -70,7 +70,7 @@ export const getStatById = async (statisticID, token) =>
 // });
 
 export const getStatisticsOfUser = async (citizenID,fiscal_year,token) =>
-await axios.get(`http://localhost:5432/getStatisticsOfUser/${citizenID}/${fiscal_year}` , {
+await axios.get(import.meta.env.VITE_APP_API+`/getStatisticsOfUser/${citizenID}/${fiscal_year}` , {
   headers: {
     Authorization: `Bearer ${token}`,
   },

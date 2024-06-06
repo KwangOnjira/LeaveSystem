@@ -11,7 +11,7 @@ const ExcelGenerator = async ({
   title,
 }) => {
   console.log("userData", userData);
-  console.log("userData[0]", userData[0].statistics[0].fiscal_year);
+  // console.log("userData[0]", userData[0].statistics[0].fiscal_year);
   console.log("range", range);
   console.log("type", type);
   console.log("inspector", inspector);
@@ -19,10 +19,14 @@ const ExcelGenerator = async ({
   console.log("title", title);
 
   const arabicToThaiNumerals = (number) => {
-    const thaiNumerals = ["๐", "๑", "๒", "๓", "๔", "๕", "๖", "๗", "๘", "๙"];
-    return number
-      .toString()
-      .replace(/\d/g, (match) => thaiNumerals[parseInt(match)]);
+    if (!number) {
+      return "๐";
+    } else {
+      const thaiNumerals = ["๐", "๑", "๒", "๓", "๔", "๕", "๖", "๗", "๘", "๙"];
+      return number
+        ?.toString()
+        .replace(/\d/g, (match) => thaiNumerals[parseInt(match)]);
+    }
   };
 
   let rangeAlphabet;
@@ -34,9 +38,9 @@ const ExcelGenerator = async ({
     )}`;
   } else if (range === 2) {
     rangeAlphabet = `วันที่ ๑ เมษายน ${arabicToThaiNumerals(
-      userData[0].statistics[0].fiscal_year + 1
+      userData[0].statistics[0]?.fiscal_year + 1
     )} - วันที่ ๓๐ กันยายน ${arabicToThaiNumerals(
-      userData[0].statistics[0].fiscal_year + 1
+      userData[0].statistics[0]?.fiscal_year + 1
     )}`;
   }
 
@@ -188,7 +192,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`C${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].leave_count
+      user.statistics[0]?.leave_count
     )}`;
     sheet.getCell(`C${row}`).alignment = {
       vertical: "middle",
@@ -200,7 +204,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`D${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].SL_In_Range
+      user.statistics[0]?.SL_In_Range
     )}`;
     sheet.getCell(`D${row}`).alignment = {
       vertical: "middle",
@@ -212,7 +216,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`E${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].PL_In_Range
+      user.statistics[0]?.PL_In_Range
     )}`;
     sheet.getCell(`E${row}`).alignment = {
       vertical: "middle",
@@ -224,7 +228,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`F${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].OL_In_Range
+      user.statistics[0]?.OL_In_Range
     )}`;
     sheet.getCell(`F${row}`).alignment = {
       vertical: "middle",
@@ -236,7 +240,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`G${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].ML_In_Range
+      user.statistics[0]?.ML_In_Range
     )}`;
     sheet.getCell(`G${row}`).alignment = {
       vertical: "middle",
@@ -248,7 +252,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`H${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].STL_In_Range
+      user.statistics[0]?.STL_In_Range
     )}`;
 
     sheet.getCell(`H${row}`).alignment = {
@@ -262,7 +266,7 @@ const ExcelGenerator = async ({
     };
 
     sheet.getCell(`I${row}`).value = `${arabicToThaiNumerals(
-      user.statistics[0].total_leaveDay
+      user.statistics[0]?.total_leaveDay
     )}`;
     sheet.getCell(`I${row}`).alignment = {
       vertical: "middle",

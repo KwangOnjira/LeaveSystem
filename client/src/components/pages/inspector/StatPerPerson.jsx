@@ -53,7 +53,7 @@ const StatPerPerson = () => {
         setUserData(fetchUser);
         if (fetchUser.signature) {
           setSignatureUser(
-            `http://localhost:5432/signatures/${fetchUser.signature}`
+            import.meta.env.VITE_APP_API+`/signatures/${fetchUser.signature}`
           );
         }
 
@@ -108,7 +108,7 @@ const StatPerPerson = () => {
         leaveID,
         localStorage.getItem("token")
       );
-      firstSignature = `http://localhost:5432/signatures/${getfirstSignature.data}`;
+      firstSignature = import.meta.env.VITE_APP_API+`/signatures/${getfirstSignature.data}`;
     } else {
       firstSignature = null;
     }
@@ -118,9 +118,9 @@ const StatPerPerson = () => {
       leaveData: getLeaveData.data,
       userSignature: signatureUser,
       prevStat: PrevStat.data,
-      inspectorSignature: `http://localhost:5432/signatures/${inspectorSignature.data}`,
+      inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${inspectorSignature.data}`,
       firstSignature: firstSignature,
-      secondSignature: `http://localhost:5432/signatures/${secondSignature.data}`,
+      secondSignature: import.meta.env.VITE_APP_API+`/signatures/${secondSignature.data}`,
     });
     console.log("signatureUser: ", signatureUser);
   };
@@ -156,7 +156,7 @@ const StatPerPerson = () => {
           getCancelData.data[0].leaveID,
           localStorage.getItem("token")
         );
-        firstSignature = `http://localhost:5432/signatures/${getfirstSignature.data}`;
+        firstSignature = import.meta.env.VITE_APP_API+`/signatures/${getfirstSignature.data}`;
       } else {
         firstSignature = null;
       }
@@ -168,7 +168,7 @@ const StatPerPerson = () => {
       prevleave: prevVacation.data,
       userSignature: signatureUser,
       firstSignature: firstSignature,
-      secondSignature: `http://localhost:5432/signatures/${secondSignature.data}`,
+      secondSignature: import.meta.env.VITE_APP_API+`/signatures/${secondSignature.data}`,
     });
   };
 

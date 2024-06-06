@@ -2,7 +2,7 @@ const dbSeq = require("../Config/index");
 dbSeq.sequelize.sync();
 
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 

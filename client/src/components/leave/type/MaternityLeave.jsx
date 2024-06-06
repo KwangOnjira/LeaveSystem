@@ -69,7 +69,7 @@ const MaternityLeave = () => {
     lastDay: "",
     numDay: "",
     status: "",
-    allow: "",
+    allow: 0,
     comment: "",
   });
   console.log(formMaternity);
@@ -235,6 +235,7 @@ const MaternityLeave = () => {
           topic: "ขอลาคลอด",
           date: currentDate,
           status: "รอผู้ตรวจสอบ",
+          allow:0
         },
         localStorage.getItem("token")
       );

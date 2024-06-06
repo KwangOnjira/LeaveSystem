@@ -2,15 +2,16 @@ import axios from "axios";
 
 //register(formData)
 export const register = async (data) =>
-  await axios.post("http://localhost:5432/register", data);
+  await axios.post(import.meta.env.VITE_APP_API+"/register", data);
 
 //login(formData)
 export const login = async (formData) =>
-  await axios.post("http://localhost:5432/login", formData);
+  await axios.post(import.meta.env.VITE_APP_API+"/login", formData);
+  
 
 //currentUser(localStorage.getItem("token"));
 export const currentUser = async (token) =>
-  await axios.get("http://localhost:5432/getProfile", {
+  await axios.get(import.meta.env.VITE_APP_API+"/getProfile", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -18,7 +19,7 @@ export const currentUser = async (token) =>
 
 //currentAdmin(localStorage.getItem("token"));
 export const currentAdmin = async (token) =>
-  await axios.post("http://localhost:5432/currentAdmin",{}, {
+  await axios.post(import.meta.env.VITE_APP_API+"/currentAdmin",{}, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -26,7 +27,7 @@ export const currentAdmin = async (token) =>
 
 //currentInspector(localStorage.getItem("token"));
 export const currentInspector = async (token) =>
-  await axios.post("http://localhost:5432/currentInspector",{}, {
+  await axios.post(import.meta.env.VITE_APP_API+"/currentInspector",{}, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -34,7 +35,7 @@ export const currentInspector = async (token) =>
 
 //currentSuperior(localStorage.getItem("token"));
 export const currentSuperior = async (token) =>
-  await axios.post("http://localhost:5432/currentSuperior",{}, {
+  await axios.post(import.meta.env.VITE_APP_API+"/currentSuperior",{}, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -42,7 +43,7 @@ export const currentSuperior = async (token) =>
 
 //updateUser(userData,localStorage.getItem("token"))
 export const updateUser = async (userData, token) =>
-  await axios.put("http://localhost:5432/profile", userData, {
+  await axios.put(import.meta.env.VITE_APP_API+"/profile", userData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -50,21 +51,21 @@ export const updateUser = async (userData, token) =>
 
   //userById(citizenID,localStorage.getItem("token"))
 export const userById = async (citizenID, token) =>
-  await axios.get(`http://localhost:5432/getUserById/${citizenID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getUserById/${citizenID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
   
 export const getSignatureDeputy = async (leaveID, token) =>
-  await axios.get(`http://localhost:5432/getSignatureDeputy/${leaveID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getSignatureDeputy/${leaveID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
   
 export const getSignatureInspector = async (leaveID, token) =>
-  await axios.get(`http://localhost:5432/getSignatureInspector/${leaveID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getSignatureInspector/${leaveID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -72,7 +73,7 @@ export const getSignatureInspector = async (leaveID, token) =>
 
 
 export const getSignatureFirstSuperior = async (leaveID, token) =>
-  await axios.get(`http://localhost:5432/getSignatureFirstSuperior/${leaveID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getSignatureFirstSuperior/${leaveID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -80,14 +81,14 @@ export const getSignatureFirstSuperior = async (leaveID, token) =>
 
 
 export const getSignatureSecondSuperior = async (leaveID, token) =>
-  await axios.get(`http://localhost:5432/getSignatureSecondSuperior/${leaveID}`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getSignatureSecondSuperior/${leaveID}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const deleteUsers = async (citizenID,token) =>
-  await axios.delete(`http://localhost:5432/deleteUsers/${citizenID}`,  {
+  await axios.delete(import.meta.env.VITE_APP_API+`/deleteUsers/${citizenID}`,  {
     headers: {
       Authorization: `Bearer ${token}`,
     },

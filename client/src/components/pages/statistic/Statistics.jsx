@@ -45,7 +45,7 @@ const Statistics = () => {
         setUserData(getUser.data);
         if (getUser.data.signature) {
           setSignatureUser(
-            `http://localhost:5432/signatures/${getUser.data.signature}`
+            import.meta.env.VITE_APP_API+`/signatures/${getUser.data.signature}`
           );
         }
 
@@ -187,7 +187,7 @@ const Statistics = () => {
         leaveID,
         localStorage.getItem("token")
       );
-      firstSignature = `http://localhost:5432/signatures/${getfirstSignature.data}`;
+      firstSignature = import.meta.env.VITE_APP_API+`/signatures/${getfirstSignature.data}`;
     } else {
       firstSignature = null;
     }
@@ -197,9 +197,9 @@ const Statistics = () => {
       leaveData: getLeaveData.data,
       userSignature: signatureUser,
       prevStat: PrevStat.data,
-      inspectorSignature: `http://localhost:5432/signatures/${inspectorSignature.data}`,
+      inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${inspectorSignature.data}`,
       firstSignature: firstSignature,
-      secondSignature: `http://localhost:5432/signatures/${secondSignature.data}`,
+      secondSignature: import.meta.env.VITE_APP_API+`/signatures/${secondSignature.data}`,
     });
     console.log("signatureUser: ", signatureUser);
     console.log("pdfDataUri: ", pdfDataUri);
@@ -237,7 +237,7 @@ const Statistics = () => {
           getCancelData.data[0].leaveID,
           localStorage.getItem("token")
         );
-        firstSignature = `http://localhost:5432/signatures/${getfirstSignature.data}`;
+        firstSignature = import.meta.env.VITE_APP_API+`/signatures/${getfirstSignature.data}`;
       } else {
         firstSignature = null;
       }
@@ -249,7 +249,7 @@ const Statistics = () => {
       prevleave: prevVacation.data,
       userSignature: signatureUser,
       firstSignature: firstSignature,
-      secondSignature: `http://localhost:5432/signatures/${secondSignature.data}`,
+      secondSignature: import.meta.env.VITE_APP_API+`/signatures/${secondSignature.data}`,
     });
   };
 

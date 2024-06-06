@@ -134,7 +134,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "ข้าราชการ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName} ฝ่าย${currentuserData.sub_division}`,
       });
     } else if (currentuserData.divisionName === "สำนักปลัด อบจ.") {
@@ -161,7 +161,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "ข้าราชการ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     } else {
@@ -188,7 +188,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "ข้าราชการ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     }
@@ -220,7 +220,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "ลูกจ้างประจำ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName} ฝ่าย${currentuserData.sub_division}`,
       });
     } else if (currentuserData.divisionName === "สำนักปลัด อบจ.") {
@@ -247,7 +247,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "ลูกจ้างประจำ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     } else {
@@ -274,7 +274,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "ลูกจ้างประจำ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     }
@@ -307,7 +307,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "พนักงานจ้างตามภารกิจ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName} ฝ่าย${currentuserData.sub_division}`,
       });
     } else if (currentuserData.divisionName === "สำนักปลัด อบจ.") {
@@ -334,7 +334,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "พนักงานจ้างตามภารกิจ",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     } else {
@@ -361,7 +361,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "พนักงานจ้าง",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     }
@@ -392,7 +392,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "จ้างทั่วไป",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName} ฝ่าย${currentuserData.sub_division}`,
       });
     } else if (currentuserData.divisionName === "สำนักปลัด อบจ.") {
@@ -418,7 +418,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "จ้างทั่วไป",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     } else {
@@ -444,7 +444,7 @@ const StatDivision = ({ userId }) => {
         range: range,
         type: "จ้างทั่วไป",
         inspector: currentuserData,
-        inspectorSignature: `http://localhost:5432/signatures/${currentuserData.signature}`,
+        inspectorSignature: import.meta.env.VITE_APP_API+`/signatures/${currentuserData.signature}`,
         title: `กอง${currentuserData.divisionName}`,
       });
     }

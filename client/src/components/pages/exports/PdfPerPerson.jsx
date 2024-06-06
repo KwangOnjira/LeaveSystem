@@ -62,7 +62,7 @@ const PdfPerPerson = ({ allDataArray, userData }) => {
             ``,
             ``,
             ``,
-            `http://localhost:5432/signatures/${data[2]}`,
+            import.meta.env.VITE_APP_API+`/signatures/${data[2]}`,
             data[0].sickleave.reason,
           ]);
           break;
@@ -83,7 +83,7 @@ const PdfPerPerson = ({ allDataArray, userData }) => {
             data[1].PL_lastLeave,
             data[1].PL_thisLeave,
             data[1].PL_remaining,
-            `http://localhost:5432/signatures/${data[2]}`,
+            import.meta.env.VITE_APP_API+`/signatures/${data[2]}`,
             ``,
           ]);
           break;
@@ -104,7 +104,7 @@ const PdfPerPerson = ({ allDataArray, userData }) => {
             ``,
             ``,
             ``,
-            `http://localhost:5432/signatures/${data[2]}`,
+            import.meta.env.VITE_APP_API+`/signatures/${data[2]}`,
             ``,
           ]);
           break;
@@ -125,7 +125,7 @@ const PdfPerPerson = ({ allDataArray, userData }) => {
             ``,
             ``,
             ``,
-            `http://localhost:5432/signatures/${data[2]}`,
+            import.meta.env.VITE_APP_API+`/signatures/${data[2]}`,
             `ยกเลิกลาพักผ่อน ${data[0].cancelNumDay}วัน`,
           ]);
           break;

@@ -8,13 +8,13 @@ module.exports = (sequelize, Sequelize) => {
           field: "statisticID",
         },
         fiscal_year: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.INTEGER(11),
           allowNull: true,
           defaultValue: 0,
           field: "fiscal_year",
         },
         range: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.INTEGER(11),
           allowNull: true,
           defaultValue: 0,
           field: "range",

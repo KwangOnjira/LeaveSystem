@@ -29,7 +29,7 @@ const RequestFromUser = ({ userId }) => {
         console.log("divisionName: ", fetchUser.data.divisionName);
         if (fetchUser.data.divisionName === "กองช่าง") {
           const usersResponse = await axios.get(
-            "http://localhost:5432/sameBothDivAndSubDivForRequest",
+            import.meta.env.VITE_APP_API+"/sameBothDivAndSubDivForRequest",
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -40,7 +40,7 @@ const RequestFromUser = ({ userId }) => {
           setUsersData(usersResponse.data);
 
           const cancelResponse = await axios.get(
-            "http://localhost:5432/cancelSameBothDivAndSubDivForRequest",
+            import.meta.env.VITE_APP_API+"/cancelSameBothDivAndSubDivForRequest",
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -51,7 +51,7 @@ const RequestFromUser = ({ userId }) => {
           setCancelUsersData(cancelResponse.data);
         } else if (fetchUser.data.divisionName === "สำนักปลัด อบจ.") {
           const usersResponse = await axios.get(
-            "http://localhost:5432/divisionOfficePAOForRequest",
+            import.meta.env.VITE_APP_API+"/divisionOfficePAOForRequest",
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -62,7 +62,7 @@ const RequestFromUser = ({ userId }) => {
           setUsersData(usersResponse.data);
 
           const cancelResponse = await axios.get(
-            "http://localhost:5432/cancelDivisionOfficePAOForRequest",
+            import.meta.env.VITE_APP_API+"/cancelDivisionOfficePAOForRequest",
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -73,7 +73,7 @@ const RequestFromUser = ({ userId }) => {
           setCancelUsersData(cancelResponse.data);
         } else {
           const usersResponse = await axios.get(
-            "http://localhost:5432/sameDivisionForRequest",
+            import.meta.env.VITE_APP_API+"/sameDivisionForRequest",
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -85,7 +85,7 @@ const RequestFromUser = ({ userId }) => {
           setUsersData(usersResponse.data);
 
           const cancelResponse = await axios.get(
-            "http://localhost:5432/cancelSameDivisionForRequest",
+            import.meta.env.VITE_APP_API+"/cancelSameDivisionForRequest",
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,

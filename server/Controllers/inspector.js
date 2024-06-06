@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 
 const dbSeq = require("../Config/index");
+const { Op } = require('sequelize');
 const { users } = dbSeq;
 dbSeq.sequelize.sync();
 
@@ -527,6 +528,7 @@ exports.samedivisionTypeEmployee = async (req, res) => {
       where: {
         divisionName: userdata.dataValues.divisionName,
         type_of_employee: type_of_employee,
+        role: { [Op.not]: 'admin' },
       },
       include: {
         where: { fiscal_year: fiscal_year, range: range },
@@ -567,6 +569,7 @@ exports.divisionOfficePAOTypeEmployee = async (req, res) => {
           { divisionName: userdata.dataValues.divisionName },
           { sub_division: { [dbSeq.Sequelize.Op.substring]: "ปลัด" } },
         ],
+        role: { [Op.not]: 'admin' },
       },
       include: {
         where: { fiscal_year: fiscal_year, range: range },
@@ -611,6 +614,7 @@ exports.sameBothDivAndSubDivTypeEmployee = async (req, res) => {
         divisionName: userdata.dataValues.divisionName,
         sub_division: userdata.dataValues.sub_division,
         type_of_employee: type_of_employee,
+        role: { [Op.not]: 'admin' },
       },
       include: {
         model: dbSeq.statistic,

@@ -1,27 +1,27 @@
 import axios from "axios";
 
 export const getUserinSameDivision = async (token) =>
-  await axios.get(`http://localhost:5432/getUserinSameDivision`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getUserinSameDivision`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getUserForDeputy = async (token) =>
-  await axios.get(`http://localhost:5432/getUserForDeputy`, {
+  await axios.get(import.meta.env.VITE_APP_API+`/getUserForDeputy`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   export const updateStatusLeave = async(leaveID,leaveData , token) =>
-await axios.put(`http://localhost:5432/updateStatus/${leaveID}`, leaveData, {
+await axios.put(import.meta.env.VITE_APP_API+`/updateStatus/${leaveID}`, leaveData, {
   headers: {
     Authorization: `Bearer ${token}`,
   },
 });
   export const updateDateDeputy = async(leaveID,leaveData , token) =>
-await axios.put(`http://localhost:5432/updateDateDeputy/${leaveID}`, leaveData, {
+await axios.put(import.meta.env.VITE_APP_API+`/updateDateDeputy/${leaveID}`, leaveData, {
   headers: {
     Authorization: `Bearer ${token}`,
   },

@@ -188,7 +188,7 @@ const ConfirmRequest = () => {
         // setCurrentStatData(fetchCurrentStat.data);
 
         const getSuperior = await axios.get(
-          "http://localhost:5432/getSuperior"
+          import.meta.env.VITE_APP_API+"/getSuperior"
         );
         console.log("getAllSuperior", getSuperior.data);
         setGetSuperior(getSuperior.data);

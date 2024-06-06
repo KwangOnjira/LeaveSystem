@@ -123,13 +123,13 @@ const Profile = () => {
         }
 
         const getSuperior = await axios.get(
-          "http://localhost:5432/getSuperior"
+          import.meta.env.VITE_APP_API+`/getSuperior`
         );
         console.log("getSuperior", getSuperior.data);
         setGetSuperior(getSuperior.data);
 
         const getFirstSuperior = await axios.get(
-          `http://localhost:5432/getAllSuperiorInSameDivision/${response.data.citizenID}`
+          import.meta.env.VITE_APP_API+`/getAllSuperiorInSameDivision/${response.data.citizenID}`
         );
         console.log("getFirstSuperior", getFirstSuperior.data);
         setGetFirstSuperior(getFirstSuperior.data);
@@ -1233,7 +1233,7 @@ const Profile = () => {
                         ลายเซ็นปัจจุบัน
                       </p>
                       <img
-                        src={`http://localhost:5432/signatures/${userData.signature}`}
+                        src={import.meta.env.VITE_APP_API+`/signatures/${userData.signature}`}
                       />
                       <p
                         style={{
