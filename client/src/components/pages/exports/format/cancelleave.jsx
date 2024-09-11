@@ -3,6 +3,7 @@ import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { font } from "../THSarabun-normal";
 import { fontBold } from "../THSarabun Bold-bold";
+import { formatCurrentDate } from "../../../../function/formatCurrentDate"
 
 const cancelleave = ({
   userData,
@@ -34,20 +35,6 @@ const cancelleave = ({
     return formattedDate;
   };
 
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
   // Create a new jsPDF instance
   const pdf = new jsPDF();
 

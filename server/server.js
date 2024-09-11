@@ -34,6 +34,6 @@ readdirSync('./Routes')
 // });
 
 https.createServer(options, app) 
-.listen(port, function (req, res) { 
+listen(port, function (req, res) { 
   console.log("Server started at port 3000"); 
 });

@@ -1,11 +1,12 @@
 import axios from "axios";
 
-export const getAllUsers = async (token) =>
+export const getAllUsers = async (token) =>{
   await axios.get(import.meta.env.VITE_APP_API+`/getAllUsers`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+}
 
 export const getAllStatistics = async (token) =>
   await axios.get(import.meta.env.VITE_APP_API+`/getAllStatistics`, {

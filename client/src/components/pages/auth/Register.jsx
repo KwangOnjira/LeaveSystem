@@ -1,17 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import {  useNavigate } from "react-router-dom";
 import SignatureCanvas from "react-signature-canvas";
 import "../../../Signature.css";
-import {
-  differenceInCalendarDays,
-  differenceInYears,
-  formatDuration,
-  intervalToDuration,
-} from "date-fns";
 import {
   Box,
   Button,
@@ -23,7 +13,6 @@ import {
   Radio,
   RadioGroup,
   Select,
-  TextField,
   createTheme,
   ThemeProvider,
   Container,

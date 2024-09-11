@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { getAllUsers } from "../../../function/admin";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { useNavigate } from "react-router-dom";
 import { Table, ConfigProvider, Modal, Input, Space } from "antd";
 import Highlighter from "react-highlight-words";
@@ -31,15 +32,6 @@ const HomePageAdmin = () => {
     };
     fetchData();
   }, []);
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const handleDetail = (citizenID) => {
     navigate(`/admin/detail/${citizenID}`);

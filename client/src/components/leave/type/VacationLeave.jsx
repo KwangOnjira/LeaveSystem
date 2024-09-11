@@ -95,7 +95,7 @@ const VacationLeave = () => {
           console.log("No statistics found for the user");
         }
 
-        const fetchHoliday = await getHoliday(localStorage.getItem("token"));
+        const fetchHoliday = await getHoliday();
         console.log(fetchHoliday.data);
         setHoliData(fetchHoliday.data);
 

@@ -7,7 +7,6 @@ import Login from "./components/pages/auth/Login";
 import Profile from "./components/pages/auth/Profile";
 import Statistics from "./components/pages/statistic/Statistics";
 import "./App.css";
-import TestGetProfile from "./components/pages/auth/TestGetProfile";
 import TypeLeave from "./components/leave/TypeLeave";
 import FormLeave from "./components/leave/FormLeave";
 import HomePageAdmin from "./components/pages/admin/HomePageAdmin";
@@ -75,14 +74,8 @@ function App() {
           );
         })
         .catch((err) => console.log(err));
-      // if (token) {
-      //   setLoggedIn(true);
-      // } else {
-      //   setLoggedIn(false);
-      // }
     } catch (err) {
       console.log(err);
-      // setLoggedIn(false);
     }
   };
 
@@ -122,14 +115,14 @@ function App() {
             </UserRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/getProfile"
           element={
             <UserRoute>
               <TestGetProfile />
             </UserRoute>
           }
-        />
+        /> */}
         <Route
           path="/statistics"
           element={

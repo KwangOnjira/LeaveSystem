@@ -5,6 +5,7 @@ import { ExclamationCircleFilled } from "@ant-design/icons";
 import { findBusinessDays } from "../../../function/BusinessDay";
 import { currentUser } from "../../../function/auth";
 import { getHoliday } from "../../../function/holiday";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { createStat, getLastStatistic } from "../../../function/statistic";
 import { postMLLeave, prevLeaveOfUserID } from "../../../function/leave";
 import {
@@ -80,15 +81,6 @@ const MaternityLeave = () => {
   });
   console.log(formErrors);
 
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -100,7 +92,7 @@ const MaternityLeave = () => {
         console.log("fetchStat.data",fetchStat.data);
         setStatData(fetchStat.data);
 
-        const fetchHoliday = await getHoliday(localStorage.getItem("token"));
+        const fetchHoliday = await getHoliday();
         console.log(fetchHoliday.data);
         setHoliData(fetchHoliday.data);
 
@@ -286,21 +278,6 @@ const MaternityLeave = () => {
       },
     },
   });
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
 
   return (
     <div>

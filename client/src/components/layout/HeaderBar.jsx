@@ -31,6 +31,7 @@ const HeaderBar = () => {
     handleClose();
     navigate("/getProfile");
   };
+  
   const handleUser = (event) => {
     handleClose();
     navigate("/admin");

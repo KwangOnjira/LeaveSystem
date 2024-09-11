@@ -8,7 +8,6 @@ export const register = async (data) =>
 export const login = async (formData) =>
   await axios.post(import.meta.env.VITE_APP_API+"/login", formData);
   
-
 //currentUser(localStorage.getItem("token"));
 export const currentUser = async (token) =>
   await axios.get(import.meta.env.VITE_APP_API+"/getProfile", {

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { currentUser } from "../../../function/auth";
+import { formatCurrentDate } from "../../../function/formatCurrentDate";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { getMatchStatus, getUserMatch } from "../../../function/superior";
 import locale from "antd/locale/th_TH";
 import {
@@ -52,35 +54,11 @@ const RequestToSuperior = () => {
       const fetchStatusCancel = await getMatchStatusCancel(
         localStorage.getItem("token")
       );
-      console.log("fetchStatusCancel.data: ", fetchStatusCancel.data);
-      setMatchStatusCancel(fetchStatusCancel.data);
+      console.log("fetchStatusCancel.data: ", fetchStatusCancel?.data);
+      setMatchStatusCancel(fetchStatusCancel?.data || []);
     };
     fetchData();
   }, []);
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
 
   const handleSubmitToFirst = (citizenID, type, leaveID) => {
     navigate(`/superior/request/${citizenID}/${type}/${leaveID}`);
@@ -352,3 +330,4 @@ const RequestToSuperior = () => {
 };
 
 export default RequestToSuperior;
+

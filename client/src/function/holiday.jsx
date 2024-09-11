@@ -1,12 +1,8 @@
 import axios from "axios";
 
-//getHoliday(localStorage.getItem("token"));
-export const getHoliday = async (token) =>
-  await axios.get(import.meta.env.VITE_APP_API+"/getHoliday",{
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+//getHoliday();
+export const getHoliday = async () =>
+  await axios.get(import.meta.env.VITE_APP_API+"/getHoliday");
 
 export const getHolidayById = async (id,token) =>
   await axios.get(import.meta.env.VITE_APP_API+`/getHolidayById/${id}`,{

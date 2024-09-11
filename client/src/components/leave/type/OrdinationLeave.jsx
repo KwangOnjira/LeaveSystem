@@ -85,7 +85,7 @@ const OrdinationLeave = () => {
         console.log(fetchStat.data);
         setStatData(fetchStat.data);
 
-        const fetchHoliday = await getHoliday(localStorage.getItem("token"));
+        const fetchHoliday = await getHoliday();
         console.log(fetchHoliday.data);
         setHoliData(fetchHoliday.data);
 

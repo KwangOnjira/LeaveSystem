@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getHolidayById, updateHoliday } from "../../../../function/holiday";
+import { formatLeaveDate } from "../../../../function/formatLeaveDate";
 import dayjs from "dayjs";
 import { Button, Box, createTheme, ThemeProvider, Grid } from "@mui/material";
 import locale from "antd/locale/th_TH";
@@ -94,15 +95,6 @@ const UpdateHoliday = () => {
       },
     },
   });
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   return (
     <>

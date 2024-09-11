@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import locale from "antd/locale/th_TH";
 import { currentUser } from "../../../function/auth";
+import { formatCurrentDate } from "../../../function/formatCurrentDate"
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { getUserForDeputy } from "../../../function/deputy";
 import {
   Button,
@@ -37,30 +39,6 @@ const RepresentativeList = () => {
     };
     fetchData();
   }, []);
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
 
   const handleDetail = (citizenID, leaveID) => {
     navigate(`/deputy/list/${citizenID}/${leaveID}`);

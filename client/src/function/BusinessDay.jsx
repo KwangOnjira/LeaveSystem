@@ -8,22 +8,22 @@ export const findBusinessDays = (startDate, endDate, holidays) => {
   let businessDays = 0;
 
   while (first <= last) {
-    if (first instanceof Date && !isNaN(first)) {
-      if (first.getDay() !== 0 && first.getDay() !== 6 && !isHoliday(first, holidays)) {
+    // if (first instanceof Date && !isNaN(first)) {
+      if (first.getDay() !== 0 && first.getDay() !== 6 && !isnotHoliday(first, holidays)) {
         businessDays++;
       }
 
       first.setDate(first.getDate() + 1);
-    } else {
-      console.error("Invalid date:", first);
-      break;
-    }
+    // } else {
+    //   console.error("Invalid date:", first);
+    //   break;
+    // }
   }
 
   return businessDays;
 };
 
-const isHoliday = (dateToCheck, holidays) => {
+export const isnotHoliday = (dateToCheck, holidays) => {
   for (let i = 0; i < holidays.length; i++) {
     const holiday = holidays[i];
 

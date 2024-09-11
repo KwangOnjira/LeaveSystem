@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { currentUser, userById } from "../../../function/auth";
 import { getDataLastStatisticByid } from "../../../function/inspector";
 import { getLeavebyId, getLeavebyIdForRequest } from "../../../function/leave";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
   Box,
@@ -67,15 +68,6 @@ const Representative = () => {
     };
     fetchData();
   }, []);
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const handleConfirm = async (e) => {
     const currentDate = dayjs().toDate();

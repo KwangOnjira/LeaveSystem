@@ -4,6 +4,8 @@ import { format } from "date-fns";
 import { font } from "../THSarabun-normal";
 import { fontBold } from "../THSarabun Bold-bold";
 import dayjs from "dayjs";
+import { formatCurrentDate } from "../../../../function/formatCurrentDate";
+import { formatLeaveDateForReport } from "../../../../function/formatLeaveDateForReport";
 
 const studyleave = ({
   userData,
@@ -20,36 +22,6 @@ const studyleave = ({
   console.log("firstSignature:", firstSignature);
   console.log("secondSignature:", secondSignature);
   console.log("prevStat:", prevStat);
-
-  const formatLeaveDate = (dateString) => {
-    if (!dateString) return "-"; // Return default value if dateString is undefined or empty
-
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const date = new Date(dateString);
-
-    // Check if the date is valid
-    if (isNaN(date.getTime())) {
-      return "-"; // Return default value if date is invalid
-    }
-
-    const formattedDate = date.toLocaleDateString("th-TH", options);
-    return formattedDate;
-  };
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
 
   const formatNumberWithCommas = (numberString) => {
     if (typeof numberString === "undefined") return "undefined"; // Return empty string if input is undefined
@@ -196,16 +168,16 @@ const studyleave = ({
   pdf.text(`${userData.position}`, 126, 62.5);
   pdf.text(`${leaveData[0].studyleave.level}`, 39, 69);
   pdf.text(`${userData.divisionName}`, 107, 69);
-  pdf.text(`${formatLeaveDate(userData.birthday)}`, 42, 75.5);
-  pdf.text(`${formatLeaveDate(userData.start_of_work_on)}`, 105, 75.5);
+  pdf.text(`${formatLeaveDateForReport(userData.birthday)}`, 42, 75.5);
+  pdf.text(`${formatLeaveDateForReport(userData.start_of_work_on)}`, 105, 75.5);
   pdf.text(
     `${formatNumberWithCommas(leaveData[0].studyleave.salaryNumber)}`,
     165,
     75.5
   );
   pdf.text(`${leaveData[0].studyleave.salaryAlphabet}`, 30, 82);
-  pdf.text(`${formatLeaveDate(leaveData[0].firstDay)}`, 51, 132);
-  pdf.text(`${formatLeaveDate(leaveData[0].lastDay)}`, 102, 132);
+  pdf.text(`${formatLeaveDateForReport(leaveData[0].firstDay)}`, 51, 132);
+  pdf.text(`${formatLeaveDateForReport(leaveData[0].lastDay)}`, 102, 132);
   pdf.text(
     `${
         calculateDateDifference().years > 0 ? `${calculateDateDifference().years}` : '-'
@@ -289,7 +261,7 @@ const studyleave = ({
     pdf.setFontSize(16);
     pdf.text(`วันที่...............................................`, 100, 229);
     pdf.text(
-      `            ${formatLeaveDate(leaveData[0]?.date_first_supeior)}`,
+      `            ${formatLeaveDateForReport(leaveData[0]?.date_first_supeior)}`,
       100,
       228
     );
@@ -343,7 +315,7 @@ const studyleave = ({
   pdf.setFontSize(16);
   pdf.text(`วันที่...............................................`, 100, 274);
   pdf.text(
-    `            ${formatLeaveDate(leaveData[0].date_second_supeior)}`,
+    `            ${formatLeaveDateForReport(leaveData[0].date_second_supeior)}`,
     100,
     273
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getStatById, getStatistic } from "../../../function/statistic";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import locale from "antd/locale/th_TH";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
@@ -251,15 +252,6 @@ const Statistics = () => {
       firstSignature: firstSignature,
       secondSignature: import.meta.env.VITE_APP_API+`/signatures/${secondSignature.data}`,
     });
-  };
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
   };
 
   const theme = createTheme({

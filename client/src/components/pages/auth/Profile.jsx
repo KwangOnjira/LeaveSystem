@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
 import { currentUser, updateUser } from "../../../function/auth";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { useNavigate } from "react-router-dom";
 import { resetPasswordForAdmin } from "../../../function/admin";
 import ReactSignatureCanvas from "react-signature-canvas";
@@ -282,15 +283,6 @@ const Profile = () => {
   const handleTurnBackData = (e) => {
     e.preventDefault();
     setUserData(intiUserData);
-  };
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
   };
 
   const handleChange = (e) => {

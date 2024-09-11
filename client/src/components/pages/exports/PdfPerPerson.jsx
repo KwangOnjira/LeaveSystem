@@ -3,19 +3,12 @@ import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { font } from "./THSarabun-normal";
 import { fontBold } from "./THSarabun Bold-bold";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 
 const PdfPerPerson = ({ allDataArray, userData }) => {
   console.log("allDataArray: ", allDataArray);
   console.log("userData: ", userData);
 
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const pdf = new jsPDF("l", "px", "a4");
   pdf.addFileToVFS("MyFont.ttf", font);

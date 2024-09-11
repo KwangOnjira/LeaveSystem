@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { currentUser } from "../../../function/auth";
+import { formatCurrentDate } from "../../../function/formatCurrentDate";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import locale from "antd/locale/th_TH";
 import axios from "axios";
 import {
@@ -102,34 +104,11 @@ const RequestFromUser = ({ userId }) => {
     fetchData();
   }, [userId]);
   document.body.style.backgroundColor = "#F3F3EA";
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const handleDetail = (citizenID, type, leaveID, prevStatisticID) => {
     navigate(
       `/inspector/request/${citizenID}/${type}/${leaveID}/${prevStatisticID}`
     );
-  };
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
   };
   const theme = createTheme({
     breakpoints: {

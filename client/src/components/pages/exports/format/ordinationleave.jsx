@@ -3,6 +3,8 @@ import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { font } from "../THSarabun-normal";
 import { fontBold } from "../THSarabun Bold-bold";
+import { formatCurrentDate } from "../../../../function/formatCurrentDate";
+import { formatLeaveDateForReport } from "../../../../function/formatLeaveDateForReport";
 
 const ordinationleave = ({
   userData,
@@ -20,35 +22,6 @@ const ordinationleave = ({
   console.log("secondSignature:", secondSignature);
   console.log("prevStat:", prevStat);
 
-  const formatLeaveDate = (dateString) => {
-    if (!dateString) return "-"; // Return default value if dateString is undefined or empty
-
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const date = new Date(dateString);
-
-    // Check if the date is valid
-    if (isNaN(date.getTime())) {
-      return "-"; // Return default value if date is invalid
-    }
-
-    const formattedDate = date.toLocaleDateString("th-TH", options);
-    return formattedDate;
-  };
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
   const pdf = new jsPDF();
 
   pdf.addFileToVFS("MyFont.ttf", font);
@@ -80,8 +53,8 @@ const ordinationleave = ({
   pdf.text(`${userData.position}`, 126, 62.5);
   pdf.text(`${leaveData[0].ordinationleave.level}`, 39, 69);
   pdf.text(`${userData.divisionName}`, 107, 69);
-  pdf.text(`${formatLeaveDate(userData.birthday)}`, 42, 75.5);
-  pdf.text(`${formatLeaveDate(userData.start_of_work_on)}`, 110, 75.5);
+  pdf.text(`${formatLeaveDateForReport(userData.birthday)}`, 42, 75.5);
+  pdf.text(`${formatLeaveDateForReport(userData.start_of_work_on)}`, 110, 75.5);
 
   pdf.setFontSize(16);
   const checked =
@@ -111,11 +84,11 @@ const ordinationleave = ({
   pdf.setFontSize(14);
   pdf.text(`${leaveData[0].ordinationleave.nameTemple}`, 123, 90.5);
   pdf.text(`${leaveData[0].ordinationleave.addressTemple}`, 39, 97);
-  pdf.text(`${formatLeaveDate(leaveData[0].ordinationleave.dateOrdi)}`, 65, 103.5);
+  pdf.text(`${formatLeaveDateForReport(leaveData[0].ordinationleave.dateOrdi)}`, 65, 103.5);
   pdf.text(`${leaveData[0].ordinationleave.stayTemple}`, 129, 103.5);
   pdf.text(`${leaveData[0].ordinationleave.addressStayTemple}`, 40, 109.7);
-  pdf.text(`${formatLeaveDate(leaveData[0].firstDay)}`, 44, 116.2);
-  pdf.text(`${formatLeaveDate(leaveData[0].lastDay)}`, 88, 116.2);
+  pdf.text(`${formatLeaveDateForReport(leaveData[0].firstDay)}`, 44, 116.2);
+  pdf.text(`${formatLeaveDateForReport(leaveData[0].lastDay)}`, 88, 116.2);
   pdf.text(`${leaveData[0].numDay}`, 140, 116.2);
 
   pdf.setFontSize(16);
@@ -171,7 +144,7 @@ const ordinationleave = ({
     pdf.setFontSize(16);
     pdf.text(`วันที่...............................................`, 124, 211);
     pdf.text(
-      `            ${formatLeaveDate(leaveData[0]?.date_first_supeior)}`,
+      `            ${formatLeaveDateForReport(leaveData[0]?.date_first_supeior)}`,
       124,
       210
     );
@@ -233,7 +206,7 @@ const ordinationleave = ({
   pdf.setFontSize(16);
   pdf.text(`วันที่...............................................`, 124, 274);
   pdf.text(
-    `            ${formatLeaveDate(leaveData[0].date_second_supeior)}`,
+    `            ${formatLeaveDateForReport(leaveData[0].date_second_supeior)}`,
     124,
     273
   );

@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { findBusinessDays } from "../../../function/BusinessDay";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import {
   Box,
   Button,
@@ -86,15 +87,6 @@ const PersonalLeave = () => {
   });
   console.log(formErrors);
 
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -106,7 +98,7 @@ const PersonalLeave = () => {
         console.log(fetchStat.data);
         setStatData(fetchStat.data);
 
-        const fetchHoliday = await getHoliday(localStorage.getItem("token"));
+        const fetchHoliday = await getHoliday();
         console.log(fetchHoliday.data);
         setHoliData(fetchHoliday.data);
 

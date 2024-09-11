@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { deleteHoliday, getHoliday } from "../../../../function/holiday";
+import { formatLeaveDate } from "../../../../function/formatLeaveDate";
 import { useNavigate } from "react-router-dom";
 import { Table, ConfigProvider, Modal, Input, Space } from "antd";
 import Highlighter from "react-highlight-words";
@@ -21,7 +22,7 @@ const AdminHoliday = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchHoliday = await getHoliday(localStorage.getItem("token"));
+        const fetchHoliday = await getHoliday();
         console.log("fetchHoliday", fetchHoliday.data);
         setHoliday(fetchHoliday.data);
       } catch (error) {
@@ -30,15 +31,6 @@ const AdminHoliday = () => {
     };
     fetchData();
   }, []);
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const handleAdd = async (e) => {
     e.preventDefault();

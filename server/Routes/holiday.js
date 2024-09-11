@@ -3,7 +3,7 @@ const { getHoliday, createHoliday, deleteHoliday, updateHoliday, getHolidayById 
 const { authenticate } = require('../Middleware/auth');
 const router = express.Router()
 
-router.get("/getHoliday",authenticate,getHoliday)
+router.get("/getHoliday",getHoliday)
 router.get("/getHolidayById/:id",authenticate,getHolidayById)
 router.post("/createHoliday",authenticate,createHoliday)
 router.delete("/deleteHoliday/:id",authenticate,deleteHoliday)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { currentUser, userById } from "../../../function/auth";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import {
   dowloadFiles,
   getLeavebyIdForRequest,
@@ -275,15 +276,6 @@ const ConfirmRequest = () => {
     userData.position_first_supeior,
     userData.position_second_supeior,
   ]);
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const downloadFile = async (e) => {
     e.preventDefault();

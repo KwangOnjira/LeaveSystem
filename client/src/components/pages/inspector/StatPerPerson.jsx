@@ -4,6 +4,7 @@ import locale from "antd/locale/th_TH";
 import { getUsers } from "../../../function/inspector";
 // import { Table } from "@mui/joy";
 import { getStatById, getStatisticsOfUser } from "../../../function/statistic";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import { LeftOutlined } from "@ant-design/icons";
 import {
   getAllLeaveOfUserByCitizenID,
@@ -177,15 +178,6 @@ const StatPerPerson = () => {
       allDataArray,
       userData,
     });
-  };
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
   };
 
   let allDataArray = [];

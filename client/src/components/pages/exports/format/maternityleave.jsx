@@ -3,6 +3,8 @@ import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { font } from "../THSarabun-normal";
 import { fontBold } from "../THSarabun Bold-bold";
+import { formatCurrentDate } from "../../../../function/formatCurrentDate";
+import { formatLeaveDateForReport } from "../../../../function/formatLeaveDateForReport";
 
 const maternityleave = ({
   userData,
@@ -21,35 +23,7 @@ const maternityleave = ({
   console.log("firstSignature:", firstSignature);
   console.log("secondSignature:", secondSignature);
   console.log("prevStat:", prevStat);
-  const formatLeaveDate = (dateString) => {
-    if (!dateString) return "-"; // Return default value if dateString is undefined or empty
 
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const date = new Date(dateString);
-
-    // Check if the date is valid
-    if (isNaN(date.getTime())) {
-      return "-"; // Return default value if date is invalid
-    }
-
-    const formattedDate = date.toLocaleDateString("th-TH", options);
-    return formattedDate;
-  };
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
   // Create a new jsPDF instance
   const pdf = new jsPDF();
 
@@ -125,9 +99,9 @@ const maternityleave = ({
   pdf.addImage(checked, "jpeg", 50, 92.5, 5, 5);
   pdf.text(`ลาคลอดบุตร`, 59, 96);
   pdf.text(
-    `ตั้งแต่วันที่................${formatLeaveDate(
+    `ตั้งแต่วันที่................${formatLeaveDateForReport(
       leaveData[0].firstDay
-    )}.................... ถึงวันที่................${formatLeaveDate(
+    )}.................... ถึงวันที่................${formatLeaveDateForReport(
       leaveData[0].lastDay
     )}.................... มีกำหนด......${leaveData[0].numDay}......วัน`,
     25,
@@ -138,9 +112,9 @@ const maternityleave = ({
   pdf.addImage(blank, "jpeg", 65, 106.2, 5.1, 5.1);
   pdf.addImage(checked, "jpeg", 91, 106.25, 5, 5);
   pdf.text(
-    `ข้าพเจ้า ได้ลา      ลาป่วย      ลากิจส่วนตัว      ลาคลอดบุตร ครั้งสุดท้าย ตั้งแต่วันที่........${formatLeaveDate(
+    `ข้าพเจ้า ได้ลา      ลาป่วย      ลากิจส่วนตัว      ลาคลอดบุตร ครั้งสุดท้าย ตั้งแต่วันที่........${formatLeaveDateForReport(
       leaveData[1]?.firstDay
-    )}........ ถึงวันที่........${formatLeaveDate(
+    )}........ ถึงวันที่........${formatLeaveDateForReport(
       leaveData[1]?.lastDay
     )}........ มีกำหนด.......${
       leaveData[1]?.numDay ?? "-"
@@ -218,7 +192,7 @@ const maternityleave = ({
   pdf.setFontSize(16);
   pdf.text(`วันที่...............................................`, 29, 243);
   pdf.text(
-    `            ${formatLeaveDate(leaveData[0].date_inspector)}`,
+    `            ${formatLeaveDateForReport(leaveData[0].date_inspector)}`,
     29,
     242
   );
@@ -265,7 +239,7 @@ const maternityleave = ({
     pdf.setFontSize(16);
     pdf.text(`วันที่...............................................`, 124, 215);
     pdf.text(
-      `            ${formatLeaveDate(leaveData[0]?.date_first_supeior)}`,
+      `            ${formatLeaveDateForReport(leaveData[0]?.date_first_supeior)}`,
       124,
       214
     );
@@ -322,7 +296,7 @@ const maternityleave = ({
   pdf.setFontSize(16);
   pdf.text(`วันที่...............................................`, 124, 274);
   pdf.text(
-    `            ${formatLeaveDate(leaveData[0].date_second_supeior)}`,
+    `            ${formatLeaveDateForReport(leaveData[0].date_second_supeior)}`,
     124,
     273
   );

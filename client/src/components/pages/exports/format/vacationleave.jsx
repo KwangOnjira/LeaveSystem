@@ -3,6 +3,8 @@ import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { font } from "../THSarabun-normal";
 import { fontBold } from "../THSarabun Bold-bold";
+import { formatCurrentDate } from "../../../../function/formatCurrentDate";
+import { formatLeaveDateForReport } from "../../../../function/formatLeaveDateForReport";
 
 const vacationleave = ({userData, leaveData, userSignature,deputySignature,inspectorSignature,firstSignature,secondSignature, prevStat}) => {
     console.log("User data:", userData);
@@ -14,35 +16,7 @@ const vacationleave = ({userData, leaveData, userSignature,deputySignature,inspe
   console.log("firstSignature:", firstSignature);
   console.log("secondSignature:", secondSignature);
   console.log("prevStat:", prevStat);
-    const formatLeaveDate = (dateString) => {
-        if (!dateString) return "-"; // Return default value if dateString is undefined or empty
-    
-        const options = { day: "numeric", month: "short", year: "numeric" };
-        const date = new Date(dateString);
-    
-        // Check if the date is valid
-        if (isNaN(date.getTime())) {
-          return "-"; // Return default value if date is invalid
-        }
-    
-        const formattedDate = date.toLocaleDateString("th-TH", options);
-        return formattedDate;
-      };
-    
-      const formatCurrentDate = (dateString) => {
-        const options = {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        };
-        const date = new Date(dateString);
-        const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-          date
-        );
-    
-        return formattedDate;
-      };
+  
     // Create a new jsPDF instance
     const pdf = new jsPDF();
 
@@ -107,12 +81,12 @@ const vacationleave = ({userData, leaveData, userSignature,deputySignature,inspe
       82,
     );
     pdf.text(
-      `${formatLeaveDate(leaveData[0].firstDay)}`,
+      `${formatLeaveDateForReport(leaveData[0].firstDay)}`,
       167,
       82,
     );
     pdf.text(
-      `${formatLeaveDate(leaveData[0].lastDay)}`,
+      `${formatLeaveDateForReport(leaveData[0].lastDay)}`,
       39,
       88.5,
     );
@@ -207,7 +181,7 @@ const vacationleave = ({userData, leaveData, userSignature,deputySignature,inspe
       189
     );
     pdf.text(
-      `            ${formatLeaveDate(leaveData[0].date_inspector)}`,
+      `            ${formatLeaveDateForReport(leaveData[0].date_inspector)}`,
       27,
       188
     );
@@ -287,7 +261,7 @@ const vacationleave = ({userData, leaveData, userSignature,deputySignature,inspe
 pdf.setFontSize(16);
 pdf.text(`วันที่...............................................`, 25, 278);
       pdf.text(
-        `            ${formatLeaveDate(leaveData[0]?.vacationleave.date_deputy_confirm)}`,
+        `            ${formatLeaveDateForReport(leaveData[0]?.vacationleave.date_deputy_confirm)}`,
         27,
         277
       );
@@ -340,7 +314,7 @@ pdf.text(`วันที่...............................................`, 25
       pdf.setFontSize(16);
       pdf.text(`วันที่...............................................`, 124, 192);
       pdf.text(
-        `            ${formatLeaveDate(leaveData[0]?.date_first_supeior)}`,
+        `            ${formatLeaveDateForReport(leaveData[0]?.date_first_supeior)}`,
         124,
         191
       );
@@ -409,7 +383,7 @@ pdf.text(`วันที่...............................................`, 25
       260
     );
     pdf.text(
-      `            ${formatLeaveDate(leaveData[0].date_second_supeior)}`,
+      `            ${formatLeaveDateForReport(leaveData[0].date_second_supeior)}`,
       124,
       259
     );

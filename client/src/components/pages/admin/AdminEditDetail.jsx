@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUsers } from "../../../function/inspector";
+import { formatLeaveDate } from "../../../function/formatLeaveDate";
 import {
   Box,
   Button,
@@ -107,15 +108,6 @@ const AdminEditDetail = () => {
     } else {
       setOpenResetPass(true);
     }
-  };
-
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
   };
 
   const handleChange = (e) => {

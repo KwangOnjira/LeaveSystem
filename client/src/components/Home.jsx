@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import { currentUser } from "../function/auth";
 import { useState } from "react";
 import { getFiscalYear } from "../function/admin";
+import { formatCurrentDate } from "../function/formatCurrentDate"
 import { getLastStatistic, getStatistic } from "../function/statistic";
+import { formatLeaveDate } from "../function/formatLeaveDate";
 import locale from "antd/locale/th_TH";
 import {
   deleteRequest,
@@ -42,21 +44,6 @@ const Home = () => {
   const [fiscalYearData, setFiscalYearData] = useState([]);
   const [useFiscalYearData, setUseFiscalYearData] = useState("");
   document.body.style.backgroundColor = "#F3F3EA";
-
-  const formatCurrentDate = (dateString) => {
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    const date = new Date(dateString);
-    const formattedDate = new Intl.DateTimeFormat("th-TH", options).format(
-      date
-    );
-
-    return formattedDate;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -103,14 +90,6 @@ const Home = () => {
     navigate(`/statistic/detail/${type}/${leaveID}/${fiscal_year}`);
   };
 
-  const formatLeaveDate = (dateString) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "th-TH",
-      options
-    );
-    return formattedDate;
-  };
 
   const handleDelete = async (leaveID) => {
     try {
